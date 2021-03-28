@@ -19,5 +19,15 @@ class Server
             throw new \Exception(sprintf("Could not bind %s:%s%s", $this->host, $this->port, socket_strerror(socket_last_error())));
         }
     }
+
+    public function __construct($host,$port)
+    {
+        $this->port = (int) $port;
+        $this->host = $host;
+
+        $this->createSocket();
+        //bind the socket
+        $this->bind();
+    }
 }
 
